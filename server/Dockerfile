@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # Копируем файлы сервера
-COPY src/server/ .
+COPY src/ .
 
 # Запускаем сервер
 CMD [ "node", "socket.js" ]
