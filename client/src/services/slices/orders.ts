@@ -51,3 +51,5 @@ const ordersSlice = createSlice({
 });
 
 export default ordersSlice.reducer;
+
+export type {OrdersState}

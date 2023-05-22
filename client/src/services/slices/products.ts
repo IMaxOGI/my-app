@@ -85,3 +85,5 @@ const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
+
+export type {ProductsState}
