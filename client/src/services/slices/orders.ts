@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction  } from "@reduxjs/toolkit";
 
 interface Order {
     id: number;
@@ -47,9 +47,14 @@ const initialState: OrdersState = {
 const ordersSlice = createSlice({
     name: "orders",
     initialState,
-    reducers: {},
+    reducers: {
+        deleteOrder: (state, action: PayloadAction<number>) => {
+            state.list = state.list.filter(order => order.id !== action.payload);
+        },
+    }
 });
 
 export default ordersSlice.reducer;
+export const {deleteOrder} = ordersSlice.actions
 
 export type {OrdersState}

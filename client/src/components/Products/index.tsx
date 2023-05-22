@@ -1,9 +1,21 @@
 import React from 'react';
+import { Product } from '../../services/slices/products';
 
-const Products: React.FC = () => {
+type ProductsProps = {
+    productsInOrder: Product[];
+};
+
+const Products: React.FC<ProductsProps> = ({ productsInOrder }) => {
     return (
-        <div></div>
+        <div>
+            {productsInOrder.map(product => (
+                <div key={product.id}>
+                    <p>Product name: {product.title}</p>
+                    {/* Display other product details as needed */}
+                </div>
+            ))}
+        </div>
     )
 }
 
-export default Products
+export default Products;
