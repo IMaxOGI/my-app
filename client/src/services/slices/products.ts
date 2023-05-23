@@ -64,6 +64,82 @@ const initialProducts: Product[] = [
         order: 2,
         date: "2017-06-29 12:09:33",
     },
+    {
+        id: 7,
+        serialNumber: 1234,
+        isNew: 1,
+        photo: "pathToFile.jpg",
+        title: "Product 7",
+        type: "Monitors",
+        specification: "Specification 1",
+        guarantee: {
+            start: "2017-06-29 12:09:33",
+            end: "2017-06-29 12:09:33",
+        },
+        price: [
+            { value: 100, symbol: "USD", isDefault: 0 },
+            { value: 2600, symbol: "UAH", isDefault: 1 },
+        ],
+        order: 4,
+        date: "2017-06-29 12:09:33",
+    },
+    {
+        id: 8,
+        serialNumber: 1234,
+        isNew: 1,
+        photo: "pathToFile.jpg",
+        title: "Product 8",
+        type: "Monitors",
+        specification: "Specification 1",
+        guarantee: {
+            start: "2017-06-29 12:09:33",
+            end: "2017-06-29 12:09:33",
+        },
+        price: [
+            { value: 100, symbol: "USD", isDefault: 0 },
+            { value: 2600, symbol: "UAH", isDefault: 1 },
+        ],
+        order: 4,
+        date: "2017-06-29 12:09:33",
+    },
+    {
+        id: 9,
+        serialNumber: 1234,
+        isNew: 1,
+        photo: "pathToFile.jpg",
+        title: "Product 9",
+        type: "Monitors",
+        specification: "Specification 1",
+        guarantee: {
+            start: "2017-06-29 12:09:33",
+            end: "2017-06-29 12:09:33",
+        },
+        price: [
+            { value: 100, symbol: "USD", isDefault: 0 },
+            { value: 2600, symbol: "UAH", isDefault: 1 },
+        ],
+        order: 5,
+        date: "2017-06-29 12:09:33",
+    },
+    {
+        id: 10,
+        serialNumber: 1234,
+        isNew: 1,
+        photo: "pathToFile.jpg",
+        title: "Product 10",
+        type: "Monitors",
+        specification: "Specification 1",
+        guarantee: {
+            start: "2017-06-29 12:09:33",
+            end: "2017-06-29 12:09:33",
+        },
+        price: [
+            { value: 100, symbol: "USD", isDefault: 0 },
+            { value: 2600, symbol: "UAH", isDefault: 1 },
+        ],
+        order: 5,
+        date: "2017-06-29 12:09:33",
+    },
 ];
 
 interface ProductsState {

@@ -30,6 +30,20 @@ export const orders: Order[] = [
         description: "desc",
         products: [5, 6],
     },
+    {
+        id: 4,
+        title: "Order 4",
+        date: "2017-06-29 12:09:33",
+        description: "desc",
+        products: [7, 8],
+    },
+    {
+        id: 5,
+        title: "Order 5",
+        date: "2017-06-29 12:09:33",
+        description: "desc",
+        products: [9, 10],
+    },
 ];
 
 interface OrdersState {

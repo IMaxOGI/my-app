@@ -36,11 +36,7 @@ const TopMenu: React.FC = () => {
                     <a className="navbar-brand ps-2" href="#">Inventory</a>
                 </div>
                 <div className="collapse navbar-collapse ms-3">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                        </form>
-                    </ul>
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
                     <div>
                         <p className="fs-6 text-start mb-2">{dayName}</p>
                         <div className="d-flex">
