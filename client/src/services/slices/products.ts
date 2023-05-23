@@ -32,7 +32,7 @@ const initialProducts: Product[] = [
         isNew: 1,
         photo: "pathToFile.jpg",
         title: "Product 1",
-        type: "Monitors",
+        type: "Mouse",
         specification: "Specification 1",
         guarantee: {
             start: "2017-06-29 12:09:33",
@@ -51,7 +51,7 @@ const initialProducts: Product[] = [
         isNew: 1,
         photo: "pathToFile.jpg",
         title: "Product 1",
-        type: "Monitors",
+        type: "Mouse",
         specification: "Specification 1",
         guarantee: {
             start: "2017-06-29 12:09:33",
@@ -108,7 +108,7 @@ const initialProducts: Product[] = [
         isNew: 1,
         photo: "pathToFile.jpg",
         title: "Product 9",
-        type: "Monitors",
+        type: "Keyboard",
         specification: "Specification 1",
         guarantee: {
             start: "2017-06-29 12:09:33",
@@ -127,7 +127,7 @@ const initialProducts: Product[] = [
         isNew: 1,
         photo: "pathToFile.jpg",
         title: "Product 10",
-        type: "Monitors",
+        type: "Keyboard",
         specification: "Specification 1",
         guarantee: {
             start: "2017-06-29 12:09:33",
