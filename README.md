@@ -39,6 +39,6 @@ License information will be added.
 ## Project Structure
 - `/client`: This directory contains the client part of the application. Here are all the application components such as NavigationMenu, TopMenu, Orders, and Products.
 - `/server`: This directory contains the server part of the application.
-- `app.js`: This file is the main application file where you can see examples of fields and the relationship of Orders to Products.
+- `app.js`: This file is the main file of the client part of the application, where you can see examples of fields and the relationship of Orders to Products.
 - `Dockerfile`: These files (one in each of the client and server directories) are used to create Docker images for the client and server parts respectively.
 - `docker-compose.yml`: This file is used to define and run multi-container Docker applications.
