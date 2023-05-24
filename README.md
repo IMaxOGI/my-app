@@ -1,46 +1,44 @@
-# Getting Started with Create React App
+# Inventory Management App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+This is a web application designed for inventory management. It allows tracking orders and products, as well as their relationships. The application also provides real-time dynamic information about the time and the number of active application sessions. The project is divided into server and client parts, united by Docker.
 
-## Available Scripts
+## Technologies
+- JavaScript
+- HTML & CSS
+- React.js
+- Node.js
+- Express.js
+- Socket.io
+- Docker
+- Redux
 
-In the project directory, you can run:
+## Installation
+To install the project, you will need Docker. Follow these steps:
 
-### `npm start`
+1. Clone the repository: `git clone <link to your repository>`
+2. Go to the project directory: `cd <project name>`
+3. Build and start the Docker images: `docker-compose up --build`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Usage
+The project is a web application that can be opened in a browser. There are two main pages: Orders and Products. Each page displays the corresponding entities with the possibility of viewing details.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Components
+Here are few of the main components in this application:
 
-### `npm test`
+- **NavigationMenu Component**: The NavigationMenu component creates the sidebar navigation in the application. This component uses react-router-dom to route between different pages like Orders and Products. The component also shows the active page based on the current location.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **CustomModal Component**: The CustomModal component creates a modal that pops up when an action requires confirmation from the user. This is currently used when an order is being deleted. The modal displays a confirmation message, and the user has the options to confirm or cancel the action. This component has been designed with reusability in mind, and can be used for other types of confirmation as well.
 
-### `npm run build`
+## Contributions
+If you want to contribute to the project, please create a branch and make a Pull Request.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## License
+License information will be added.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Structure
+- `/client`: This directory contains the client part of the application. Here are all the application components such as NavigationMenu, TopMenu, Orders, and Products.
+- `/server`: This directory contains the server part of the application.
+- `app.js`: This file is the main file of the client part of the application, where you can see examples of fields and the relationship of Orders to Products.
+- `Dockerfile`: These files (one in each of the client and server directories) are used to create Docker images for the client and server parts respectively.
+- `docker-compose.yml`: This file is used to define and run multi-container Docker applications.
