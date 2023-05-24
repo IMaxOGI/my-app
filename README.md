@@ -36,9 +36,6 @@ If you want to contribute to the project, please create a branch and make a Pull
 ## License
 License information will be added.
 
-## About the Author
-(Your name, contact information, and other details)
-
 ## Project Structure
 - `/client`: This directory contains the client part of the application. Here are all the application components such as NavigationMenu, TopMenu, Orders, and Products.
 - `/server`: This directory contains the server part of the application.
