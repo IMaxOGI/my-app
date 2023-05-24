@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 interface Price {
     value: number;
@@ -157,10 +157,14 @@ const initialState: ProductsState = {
 const productsSlice = createSlice({
     name: "products",
     initialState,
-    reducers: {},
+    reducers: {
+        deleteProduct: (state, action: PayloadAction<number>) => {
+            state.list = state.list.filter(product => product.id !== action.payload);
+        },
+    },
 });
 
 export default productsSlice.reducer;
-
 export type { Product, Price };
+export const {deleteProduct} = productsSlice.actions
 export type {ProductsState}

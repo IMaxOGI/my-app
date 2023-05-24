@@ -2,15 +2,12 @@ import { createSelector } from 'reselect'
 import { RootState } from '../store';
 import { Product } from "../slices/products";
 
-// функция получения списка всех продуктов
 const getProductsList = (state: RootState) => state.products.list;
 
-// функция получения выбранного типа
 const getSelectedType = (_state: RootState, selectedType: string) => selectedType;
 
 const getProductsInOrder = (_state: RootState, _selectedType: string, productsInOrder: Product[]) => productsInOrder;
 
-// селектор для получения отфильтрованных по типу продуктов
 export const getFilteredProducts = createSelector(
     [getProductsList, getSelectedType],
     (list: Product[], selectedType: string) => {
@@ -19,7 +16,6 @@ export const getFilteredProducts = createSelector(
     }
 );
 
-// селектор для получения отфильтрованных по типу и заказам продуктов
 export const getFilteredProductsByOrders = createSelector(
     [getProductsList, getSelectedType, getProductsInOrder],
     (list: Product[], selectedType: string, productsInOrder: Product[]) => {

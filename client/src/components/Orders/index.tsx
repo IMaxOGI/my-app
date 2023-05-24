@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../services/store';
 import { Product, Price } from '../../services/slices/products';
 import { deleteOrder } from '../../services/slices/orders';
-import Products from '../Products';
 import Modal from '../Modal';
+import ProductCard from "../ProductsCard";
 
 const Orders: React.FC = () => {
     const dispatch = useDispatch();
@@ -13,6 +13,21 @@ const Orders: React.FC = () => {
     const [showDetails, setShowDetails] = useState<Record<string, boolean>>({});
     const [showModal, setShowModal] = useState(false);
     const [modalOrder, setModalOrder] = useState<any | null>(null);
+
+    useEffect(() => {
+        const keysToUpdate = Object.keys(showDetails).filter(key =>
+            showDetails[key] && !products.find(product => product.order === parseInt(key))
+        );
+
+        if (keysToUpdate.length > 0) {
+            const newShowDetails = { ...showDetails };
+            keysToUpdate.forEach(key => {
+                newShowDetails[key] = false;
+            });
+
+            setShowDetails(newShowDetails);
+        }
+    }, [products]);
 
     const toggleDetails = (id: number) => {
         setShowDetails((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -67,35 +82,41 @@ const Orders: React.FC = () => {
                             <div className="card mb-4">
                                 <div className="card-body d-flex align-items-center">
                                     <div className="card-body d-flex align-items-center justify-content-between ">
-                                        <div>
-                                            <h5 className="card-title flex-grow-1 mb-0">{title}</h5>
-                                        </div>
+                                        {!showDetails[order.id] && (
+                                            <div>
+                                                <h5 className="card-title flex-grow-1 mb-0">{title}</h5>
+                                            </div>
+                                        )}
                                         <div>
                                             <p className="card-text mb-0">{productsInOrder.length} продуктов</p>
                                         </div>
                                         <div>
                                             <p className="card-text mb-0">{order.date}</p>
                                         </div>
-                                        <div>
-                                            <p className="card-text mb-0">{totalCostUSD} USD, {totalCostUAH} UAH</p>
-                                        </div>
-                                        <div>
-                                            <button className="btn btn-danger" onClick={() => handleDelete(order)}>
-                                                Удалить приход
-                                            </button>
-                                        </div>
+                                        {!showDetails[order.id] && (
+                                            <div>
+                                                <p className="card-text mb-0">{totalCostUSD} USD, {totalCostUAH} UAH</p>
+                                            </div>
+                                        )}
+                                        {!showDetails[order.id] && (
+                                            <div>
+                                                <button className="btn" onClick={() => handleDelete(order)}><i
+                                                    className="bi bi-trash-fill"></i></button>
+                                            </div>
+                                        )}
                                         <div>
                                             <button
                                                 className="btn btn-primary mr-2"
                                                 onClick={() => toggleDetails(order.id)}
+                                                disabled={productsInOrder.length === 0}
                                             >
-                                                Подробнее
+                                                {showDetails[order.id] ? 'Скрыть' : 'Подробнее'}
                                             </button>
                                         </div>
                                     </div>
                                     {showDetails[order.id] && (
                                         <div className="order-details">
-                                            <Products productsInOrder={productsInOrder} />
+                                            {productsInOrder.map(product => <ProductCard key={product.id} product={product} />)}
                                         </div>
                                     )}
                                 </div>

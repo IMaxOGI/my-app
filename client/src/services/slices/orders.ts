@@ -70,5 +70,4 @@ const ordersSlice = createSlice({
 
 export default ordersSlice.reducer;
 export const {deleteOrder} = ordersSlice.actions
-
 export type {OrdersState}

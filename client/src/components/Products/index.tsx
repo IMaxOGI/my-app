@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Product } from '../../services/slices/products';
-import { useSelector } from "react-redux";
+import {deleteProduct, Product} from '../../services/slices/products';
+import {useDispatch, useSelector} from "react-redux";
 import { RootState } from "../../services/store";
 import {
     getFilteredProducts,
@@ -12,6 +12,7 @@ type ProductsProps = {
 };
 
 const Products: React.FC<ProductsProps> = ({ productsInOrder }) => {
+    const dispatch = useDispatch();
     const [selectedType, setSelectedType] = useState<string>("");
 
     const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -40,39 +41,48 @@ const Products: React.FC<ProductsProps> = ({ productsInOrder }) => {
                 </div>
             </div>
             <div className="row">
-                {filteredProducts.map(product => (
-                    <div className="col-lg-12 order-card" key={product.id}>
-                        <div className="card mb-4">
-                            <div className="card-body d-flex align-items-center">
-                                <div className="card-body d-flex align-items-center justify-content-between">
-                                    <p className="card-text mb-0">{product.photo}</p>
-                                    <div className="d-flex flex-column">
-                                        <p className="card-text mb-0">{product.title}</p>
-                                        <p className="card-text mb-0 text-secondary">{product.serialNumber}</p>
-                                    </div>
-                                    <p className="card-text mb-0">{product.isNew ? "Новый" : "Б/У"}</p>
-                                    <p className="card-text mb-0">{product.type}</p>
-                                    <p className="card-text mb-0">{product.specification}</p>
-                                    <div className="d-flex flex-column">
-                                        <div className="d-flex">
-                                            <p className="text-secondary pe-2 mb-0">c</p>
-                                            <p className="card-text mb-0">{product.guarantee.start}</p>
+                {filteredProducts.map(product => {
+                    const handleDelete = () => {
+                        dispatch(deleteProduct(product.id));
+                    };
+
+                    return (
+                        <div className="col-lg-12 order-card" key={product.id}>
+                            <div className="card mb-4">
+                                <div className="card-body d-flex align-items-center">
+                                    <div className="card-body d-flex align-items-center justify-content-between">
+                                        <p className="card-text mb-0">{product.photo}</p>
+                                        <div className="d-flex flex-column">
+                                            <p className="card-text mb-0">{product.title}</p>
+                                            <p className="card-text mb-0 text-secondary">{product.serialNumber}</p>
                                         </div>
-                                        <div className="d-flex">
-                                            <p className="text-secondary pe-2 mb-0">по</p>
-                                            <p className="card-text mb-0">{product.guarantee.end}</p>
+                                        <p className="card-text mb-0">{product.isNew ? "Новый" : "Б/У"}</p>
+                                        <p className="card-text mb-0">{product.type}</p>
+                                        <p className="card-text mb-0">{product.specification}</p>
+                                        <div className="d-flex flex-column">
+                                            <div className="d-flex">
+                                                <p className="text-secondary pe-2 mb-0">c</p>
+                                                <p className="card-text mb-0">{product.guarantee.start}</p>
+                                            </div>
+                                            <div className="d-flex">
+                                                <p className="text-secondary pe-2 mb-0">по</p>
+                                                <p className="card-text mb-0">{product.guarantee.end}</p>
+                                            </div>
                                         </div>
+                                        <p className="card-text mb-0">{product.price.map(price => `${price.value} ${price.symbol}`).join(", ")}</p>
+                                        <p className="card-text mb-0">{product.order}</p>
+                                        <p className="card-text mb-0">{product.date}</p>
+                                        <button className="btn" onClick={handleDelete}><i
+                                            className="bi bi-trash-fill"></i></button>
                                     </div>
-                                    <p className="card-text mb-0">{product.price.map(price => `${price.value} ${price.symbol}`).join(", ")}</p>
-                                    <p className="card-text mb-0">{product.order}</p>
-                                    <p className="card-text mb-0">{product.date}</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         </div>
     )
 }
+
 export default Products;
