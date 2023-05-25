@@ -4,6 +4,8 @@ services:
     image: maxog/client-1:latest
     volumes:
       - ../client:/app
+    ports:
+      - 3000:3000
     depends_on:
       - server
     environment:
@@ -11,10 +13,11 @@ services:
 
   server:
     image: maxog/server-1:latest
-
+    ports:
+      - 3001:3001
   nginx:
     build:
-      context: ./nginx
+      context: nginx
     ports:
       - 80:80
     depends_on:

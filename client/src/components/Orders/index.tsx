@@ -81,7 +81,7 @@ const Orders: React.FC = () => {
                         <div key={order.id} className="col-lg-12 order-card">
                             <div className="card mb-4">
                                 <div className="card-body d-flex align-items-center">
-                                    <div className="card-body d-flex align-items-center justify-content-between ">
+                                    <div className="card-body col-md-6 d-flex align-items-center justify-content-between ">
                                         {!showDetails[order.id] && (
                                             <div>
                                                 <h5 className="card-title flex-grow-1 mb-0">{title}</h5>
