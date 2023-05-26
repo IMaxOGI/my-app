@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction  } from "@reduxjs/toolkit";
+// import axios from 'axios';
 
 interface Order {
     id: number;
@@ -58,6 +59,11 @@ const initialState: OrdersState = {
     error: null,
 };
 
+// export const fetchOrders = createAsyncThunk('orders/fetchOrders', async () => {
+//     const response = await axios.get('endpoint');
+//     return response.data as Order[];
+// })
+
 const ordersSlice = createSlice({
     name: "orders",
     initialState,
@@ -65,7 +71,20 @@ const ordersSlice = createSlice({
         deleteOrder: (state, action: PayloadAction<number>) => {
             state.list = state.list.filter(order => order.id !== action.payload);
         },
-    }
+    },
+    // extraReducers: (builder) => {
+    //     builder.addCase(fetchOrders.pending, (state) => {
+    //         state.loading = true;
+    //     });
+    //     builder.addCase(fetchOrders.fulfilled, (state, action) => {
+    //         state.loading = false;
+    //         state.list = action.payload;
+    //     });
+    //     builder.addCase(fetchOrders.rejected, (state, action) => {
+    //         state.loading = false;
+    //         state.error = action.error.message;
+    //     });
+    // }
 });
 
 export default ordersSlice.reducer;
